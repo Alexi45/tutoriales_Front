@@ -1,0 +1,31 @@
+<div>
+    <div class="submit-form">
+        <h1>Agregar Tutorial</h1>
+        <br>
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="titulo">Título</label
+>
+
+                <input type="text" class="form-control" id="titulo" required [(ngModel)]="tutorial.titulo" name="titulo" />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción</label
+>
+
+                <input class="form-control" id="descripcion" required [(ngModel)]="tutorial.descripcion" name="descripcion" />
+            </div>
+            <button (click)="guardarTutorial()" class="btn
+
+btn-info btn-lg btn-block">Enviar</button>
+
+        </div>
+        <div *ngIf="submitted">
+
+            <h4>Tutorial enviado correctamente!</h4>
+
+            <button class="btn btn-success btn-lg btn-block" (click)="nuevoTutorial()">Agregar otro tutorial</button>
+            <button class="btn btn-danger btn-lg btn-block" (click)="volver()">Volver</button>
+        </div>
+    </div>
+</div>

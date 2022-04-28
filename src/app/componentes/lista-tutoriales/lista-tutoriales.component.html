@@ -1,0 +1,48 @@
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar por título" [(ngModel)]="titulo" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="buscarTitulo()">
+Buscar
+</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Lista de tutoriales</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let tutorial of tutoriales; let i = index" [class.active]="i == indiceActual" (click)="setTutorialActivo(tutorial, i)">
+                {{ tutorial.titulo }}
+            </li>
+        </ul>
+        <button class="m-3 btn btn-sm btn-danger" (click)="eliminarTodosTutoriales()">
+
+Eliminar todo
+</button>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="tutorialActual.id">
+            <h4>Tutorial</h4>
+            <div>
+                <label><strong>Titulo:</strong></label> {{ tutorialActual.titulo }}
+
+            </div>
+            <div>
+                <label><strong>Descripcion:</strong></label> {{ tutorialActual.descripcion }}
+            </div>
+            <div>
+                <label><strong>Estado:</strong></label> {{ tutorialActual.publicado ? "Publicado" : "Pendiente" }}
+            </div>
+            <a class="badge badge-warning" routerLink="/tutoriales/{{ tutorialActual.id }}">
+
+                Editar
+            </a>
+        </div>
+        <div *ngIf="!tutorialActual">
+            <br />
+            <p>Por favor, seleccione un tutorial...</p>
+
+        </div>
+    </div>
+</div>
